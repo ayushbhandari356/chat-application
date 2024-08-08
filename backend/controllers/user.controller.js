@@ -10,6 +10,6 @@ export const getUserForSiderbar=async(req,res)=>{
 
     } catch (error) {
         console.log("error in getUserForSiderbar",error.message)
-        res.status(500).json({error:"internal server error"}) 
+        res.status(500).json({error:"internal server error in user.controller.js"}) 
     }
 } 

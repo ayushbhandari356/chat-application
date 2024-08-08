@@ -3,10 +3,10 @@ import User from "../models/user.model.js";
 import generateTokenAndSetCookie from '../utils/generateTokens.js';
 
 export const signup = async(req, res) => {
-    console.log('user signup');
+    // console.log('user signup');
     try {
-
-        const {fullname,username,password,confirmPassword,gender}=req.body  
+        // console.log(req.body)
+        const {fullName,username,password,confirmPassword,gender}=req.body  
 
         if(password!=confirmPassword){
             return res.status(400).json({error: 'Password do not matched'})
@@ -27,7 +27,7 @@ export const signup = async(req, res) => {
         const girlProfilePic=`https://avatar.iran.liara.run/public/girl?username=${username}`
 
         const newUser=new User({
-            fullname,
+            fullName,
             username,
             password:hashedPassword,
             gender,
@@ -41,7 +41,7 @@ export const signup = async(req, res) => {
         res.status(201).json({ 
             // _id is in mongodb automatically
             _id:newUser._id,
-            fullname:newUser.fullname,
+            fullName:newUser.fullName,
             username:newUser.username,
             profilePic:newUser.profilePic
          });
@@ -77,7 +77,7 @@ export const login = async(req, res) => {
 
         res.status(200).json({
             _id:user._id,
-            fullname:user.fullname,
+            fullName:user.fullName,
             username:user.username,        
             profilePic:user.profilePic
         })
