@@ -41,6 +41,15 @@ app.get("*",(req,res)=>{
 
 
 
+// to deploy in vercel
+app.use(cors({
+    origin:["https://deploy-mern.vercel.app"],
+    method:['POST',"GET"],
+    credentials:true
+}))
+
+
+
 
 server.listen(PORT,()=>{
     connectToMongoDB()
